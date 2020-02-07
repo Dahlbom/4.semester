@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_Ex_2_1", "GUI_Ex_3\GUI_Ex_2_1.csproj", "{67292AC9-2A02-4DA0-8407-ADE8D79C2474}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FB08BACE-74EB-4453-9E21-C38B65E91CFC}"
+	ProjectSection(SolutionItems) = preProject
+		Z:\OneDrive - Aarhus universitet\4. semestre\GUI\Lab 3\Sailboat.jpg = Z:\OneDrive - Aarhus universitet\4. semestre\GUI\Lab 3\Sailboat.jpg
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67292AC9-2A02-4DA0-8407-ADE8D79C2474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67292AC9-2A02-4DA0-8407-ADE8D79C2474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67292AC9-2A02-4DA0-8407-ADE8D79C2474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67292AC9-2A02-4DA0-8407-ADE8D79C2474}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7C51BD3-71A2-41D6-A51B-42163FDF167B}
+	EndGlobalSection
+EndGlobal
