@@ -1,0 +1,38 @@
+﻿<Window x:Class="GUI_Ex_2_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI_Ex_2_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200*"></ColumnDefinition>
+			<ColumnDefinition Width="200*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Image Source="Sailboat.jpg" Margin="0.5,1,-1,0.5" Grid.Column="1" MouseDown="Picture_pressed"/>
+		<Grid Column="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="5*"></RowDefinition>
+				<RowDefinition Height="5*"></RowDefinition>
+				<RowDefinition Height="5*"></RowDefinition>
+				<RowDefinition Height="5*"></RowDefinition>
+				<RowDefinition Height="50*"></RowDefinition>
+			</Grid.RowDefinitions>
+			<TextBlock Grid.Row="0" Text="Name: " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0"></TextBlock>
+			<TextBox Grid.Row="0" Name="NameTextBox"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="80,0" MinWidth="100"></TextBox>
+
+			<TextBlock Grid.Row="1" Text="Length: " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0"></TextBlock>
+			<TextBox Grid.Row="1" Text="0" Name="LengthTextBox" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="85,0" MinWidth="50"></TextBox>
+			<TextBlock Grid.Row="1" Text="feet" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="150,0"></TextBlock>
+
+			<Button Grid.Row="2" Height="20" Width="120" Content="Calculate Hull Speed" Click="Button_Click" HorizontalAlignment="Left" Margin="40,0" ></Button>
+
+			<TextBlock Grid.Row="3" Text="Hull Speed: " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0"></TextBlock>
+			<TextBlock Grid.Row="3" Name="HullSpeedTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="105,0" MinWidth="40"></TextBlock>
+			<TextBlock Grid.Row="3" Text="knots" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="150,0"></TextBlock>
+		</Grid>
+	</Grid>
+
+</Window>
