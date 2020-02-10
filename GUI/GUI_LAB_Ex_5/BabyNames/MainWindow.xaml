@@ -15,10 +15,23 @@
             <RowDefinition Height="20*"></RowDefinition>
             <RowDefinition Height="100*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="Decades" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-		<ListBox Grid.Column="0" Grid.Row="1" Name="DecadeListBox"></ListBox>
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">Decades</TextBlock>
+		<ListBox Grid.Column="0" Grid.Row="1" Name="DecadeListBox" FontSize="20" HorizontalAlignment="Center">
+			<ListBoxItem>1900</ListBoxItem>
+			<ListBoxItem>1910</ListBoxItem>
+			<ListBoxItem>1920</ListBoxItem>
+			<ListBoxItem>1930</ListBoxItem>
+			<ListBoxItem>1940</ListBoxItem>
+			<ListBoxItem>1950</ListBoxItem>
+			<ListBoxItem>1960</ListBoxItem>
+			<ListBoxItem>1970</ListBoxItem>
+			<ListBoxItem>1980</ListBoxItem>
+			<ListBoxItem>1990</ListBoxItem>
+			<ListBoxItem>2000</ListBoxItem>
+			<ListBoxItem />
+		</ListBox>
 
-        <TextBlock Grid.Column="1" Grid.Row="0" Text="Top 10 baby names in selected decade" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+		<TextBlock Grid.Column="1" Grid.Row="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">Top 10 baby names in selected decade</TextBlock>
 		<ListBox Grid.Column="1" Grid.Row="1" Name="BabyListBox"></ListBox>
 
     </Grid>

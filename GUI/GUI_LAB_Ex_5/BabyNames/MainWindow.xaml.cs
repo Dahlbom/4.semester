@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIO = System.IO;
 
 
 namespace BabyNames
@@ -23,13 +24,16 @@ namespace BabyNames
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<BabyName> _babies = new List<BabyName>();
-        private Utility _utility = new Utility();
+        private List<BabyName> _babies;
+        private string[,] rankMatrix = new string[11, 10];
+
         public MainWindow()
         {
             InitializeComponent();
-            _babies.AddRange(_utility.LoadFromFile(@"C:\Users\Frederik Dahlbom\source\repos\Dahlbom\4.semester\GUI\GUI_LAB_Ex_5\BabyNames\babynames.txt", 15));
+            Loaded += new RoutedEventHandler(MainWindow_Loaded);
+            DecadeListBox.SelectionChanged += new SelectionChangedEventHandler(DecadeListBox_SelectionChanged);
         }
+
         private void FrameworkElement_OnLoaded(object sender, RoutedEventArgs e)
         {
             foreach (var baby in _babies)
@@ -37,25 +41,67 @@ namespace BabyNames
                 BabyListBox.Items.Add(baby.Name);
             }
         }
+
+        void DecadeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBoxItem item;
+
+            item = DecadeListBox
+                .SelectedItem as ListBoxItem; // Because the data entries is done by use of ListBoxItem in XAML
+            if (item != null)
+            {
+                int decade = (Convert.ToInt32(item.Content) - 1900) / 10;
+                BabyListBox.Items.Clear();
+                for (int i = 1; i < 11; ++i)
+                {
+                    BabyListBox.Items.Add(string.Format("{0,2} {1}", i, rankMatrix[decade, i - 1]));
+                }
+            }
+        }
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            string file = SIO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "babynames.txt");
+            this._babies = Utility.LoadFromFile(file);
+
+            foreach (BabyName name in _babies)
+            {
+                for (int decade = 1900; decade < 2010; decade += 10)
+                {
+                    int rank = name.Rank(decade);
+                    int decadeIndex = (decade - 1900) / 10;
+                    if (0 < rank && rank < 11)
+                        if (rankMatrix[decadeIndex, rank - 1] == null)
+                            rankMatrix[decadeIndex, rank - 1] = name.Name;
+                        else
+                            rankMatrix[decadeIndex, rank - 1] += " and " + name.Name;
+                }
+            }
+        }
     }
 
     public class Utility
     {
-        public List<BabyName> LoadFromFile(string file, int numlines)
+        public static List<BabyName> LoadFromFile(string filename)
         {
             List<BabyName> babies = new List<BabyName>();
-            using (StreamReader sr = new StreamReader(file))
+            string line;
+
+            using (StreamReader sr = new StreamReader(filename))
             {
-                string line;
-                for (int i = 0; i < numlines; ++i)
+                line = sr.ReadLine();
+                while (line != null)
                 {
-                    line = sr.ReadLine();
                     babies.Add(new BabyName(line));
+                    line = sr.ReadLine();
                 }
             }
-
             return babies;
         }
+
+
     }
 
 }
+
+
