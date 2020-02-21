@@ -32,13 +32,38 @@
 		<TextBlock Grid.Column="0" Grid.Row="3" Text="Assignment" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
 		<TextBox Grid.Column="0" Grid.Row="3" Text="{Binding Path=CurrentAgent.Assignment}" Name="AssignmentTxtBox" HorizontalAlignment="Right" VerticalAlignment="Top" MinWidth="200" Height="100"></TextBox>
 
-		<Button Grid.Column="0" Grid.Row="4"  Height="30" Width="100" Margin="30,20.143,267.5,10.357" FontSize="20" Content="&lt;"></Button>
+		<Button Grid.Column="0" 
+		        Grid.Row="4"  
+		        Height="30" 
+		        Width="100" 
+		        Margin="30,20.143,267.5,10.357" 
+		        FontSize="20" Content="&lt;" 
+		        Click="Button_Click_left"/>
 
-		<Button Grid.Column="0" Grid.Row="4"  Height="30" Width="100" Margin="198,20.143,99.5,10.357" FontSize="20" Content="&gt;" RenderTransformOrigin="1.694,0.633"/>
+		<Button Grid.Column="0" 
+		        Grid.Row="4"  
+		        Height="30" 
+		        Width="100" 
+		        Margin="198,20.143,99.5,10.357" 
+		        FontSize="20" 
+		        Content="&gt;" 
+		        RenderTransformOrigin="1.694,0.633" 
+		        Click="Button_Click_right"/>
 
-		<Button Grid.Column="0" Grid.Row="5"  Height="30" Width="100" Margin="112,10.643,185.5,19.857" FontSize="20" Content="Add New"></Button>
+		<Button Grid.Column="0" Grid.Row="5"  Height="30" Width="100" Margin="112,10.643,185.5,19.857" FontSize="20" Content="Add New" Click="Button_Click_add_new_agent"></Button>
 
-		<ListBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Path=_agents}" DisplayMemberPath="CodeName" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding Path=CurrentAgent}" Grid.RowSpan="6" MinHeight="370" Width="340" HorizontalAlignment="Center" VerticalAlignment="Center"></ListBox>
+		<ListBox Grid.Column="1" 
+		         Grid.Row="0" 
+		         ItemsSource="{Binding Path=_Agents}" 
+		         DisplayMemberPath="CodeName" 
+		         IsSynchronizedWithCurrentItem="True" 
+		         SelectedItem="{Binding Path=CurrentAgent}"
+		         Grid.RowSpan="6" 
+		         MinHeight="370" 
+		         Name="Agent_ListBox" 
+		         Width="340" 
+		         HorizontalAlignment="Center" 
+		         VerticalAlignment="Center"/>
 
 
 	</Grid>

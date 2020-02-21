@@ -28,14 +28,16 @@ namespace AgentAssignment_3
             get { return _agents; }
         }
 
+        private Agent currentAgent = null;
+
         public Agent CurrentAgent
         {
-            get { return CurrentAgent; }
+            get { return currentAgent; }
             set
             {
-                if (CurrentAgent != value)
+                if (currentAgent != value)
                 {
-                    CurrentAgent = value;
+                    currentAgent = value;
                     NotifyPropertyChanged();
                 }
             }

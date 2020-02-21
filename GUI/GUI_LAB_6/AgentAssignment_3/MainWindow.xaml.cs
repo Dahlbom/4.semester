@@ -12,15 +12,32 @@ namespace AgentAssignment_3
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Agent> agents = new List<Agent>();
-        private Agent myAgent = new Agent();
-
         public MainWindow()
         {
             InitializeComponent();
 
 
             DataContext = new MainWindowViewModel();
+        }
+
+        private void Button_Click_left(object sender, RoutedEventArgs e)
+        {
+            if (Agent_ListBox.SelectedIndex > 0)
+                Agent_ListBox.SelectedIndex = --Agent_ListBox.SelectedIndex;
+        }
+
+        private void Button_Click_right(object sender, RoutedEventArgs e)
+        {
+            if (Agent_ListBox.SelectedIndex < Agent_ListBox.SelectedIndex+1)
+                Agent_ListBox.SelectedIndex = ++Agent_ListBox.SelectedIndex;
+        }
+
+        private void Button_Click_add_new_agent(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as MainWindowViewModel;
+            vm.AddNewAgent();
+            Agent_ListBox.SelectedIndex = Agent_ListBox.Items.Count - 1;
+            IDTxtBox.Focus();
         }
     }
 }
