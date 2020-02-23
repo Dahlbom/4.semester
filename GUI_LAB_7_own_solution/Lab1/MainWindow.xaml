@@ -6,7 +6,130 @@
         xmlns:local="clr-namespace:Lab1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+	<Window.DataContext>
+		<local:MainWindowViewModel/>
+	</Window.DataContext>
+	<DockPanel Name="dockPanelMain">
+		<Menu DockPanel.Dock="Top" Name="mainMenu">
+			<MenuItem Header="_File">
+				<MenuItem Header="_New" Command="{Binding NewFileCommand}"/>
+				<MenuItem Header="_Open" Command="{Binding OpenFileCommand}" CommandParameter="{Binding ElementName=tbxFileName, Path=Text}"/>
+				<MenuItem Header="_Save" Command="{Binding SaveCommand}"/>
+				<MenuItem Header="Save_as" Command="{Binding SaveAsCommand}" CommandParameter="{Binding ElementName=tbxFileName, Path=Text}"/>
+				<MenuItem Header="_Exit" Command="{Binding CloseAppCommand}"/>
+			</MenuItem>
+			<MenuItem Header="_Agents">
+				<MenuItem Header="_Previous" Command="{Binding PreviousCommand}"/>
+				<MenuItem Header="_Next" Command="{Binding NextCommand}"/>
+				<MenuItem Header="_Add new" Command="{Binding Path=AddNewAgentCommand}"/>
+				<MenuItem Header="_Delete" Command="{Binding Path=DeleteAgentCommand}"/>
+			</MenuItem>
+		</Menu>
+		<ToolBar DockPanel.Dock="Top" Height="auto" 
+				 FontSize="20" FontWeight="ExtraBold"
+				 Background="AliceBlue">
+
+			<Button Height="auto"
+					ToolTip="Move to previous agent"
+					Content="&lt;"
+					Command="{Binding Path=PreviousCommand}"
+					Margin="5,0,5,0"
+					/>
+			<Button Height="auto"
+					ToolTip="Move to next agent"
+					Content="&gt;"
+					Command="{Binding Path=NextCommand}"
+					Margin="5,0,5,0"
+					/>
+			<Button Height="auto"
+					ToolTip="Add a new agent"
+					Content="+"
+					Command="{Binding Path=AddNewAgentCommand}"
+					Margin="5,0,5,0"
+					/>
+			<Button Height="auto"
+					ToolTip="Delete selected agent"
+					Content="-"
+					Command="{Binding Path=DeleteAgentCommand}"
+					Margin="5,0,5,0"
+					/>
+			<Label Content="File _Name"
+				   Target="{Binding ElementName=tbxFileName}"
+				   FontSize="14"
+				   FontWeight="Medium"
+				   VerticalAlignment="Bottom"
+				   />
+			<TextBox Name="tbxFileName"
+					 FontSize="14"
+					 FontWeight="Medium"
+					 VerticalAlignment="Center"
+					 MinWidth="150"
+					 />
+		</ToolBar>
+		<StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="AliceBlue">
+			<StatusBarItem Content="Agents Count: "/>
+			<StatusBarItem Name="sbiAgentsCount" Width="40"
+						   Content="{Binding Path=Agent.Count}"/>
+			<StatusBarItem Name="sbiDateTime" HorizontalAlignment="Right">
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+					<TextBlock Margin="4,0" Name="tblkDate" Text="{Binding Path=Clock.Date}"/>
+					<TextBlock Margin="4,0" Name="tblkTime" Text="{Binding Path=Clock.Time}"/>
+				</StackPanel>
+			</StatusBarItem>
+		</StatusBar>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="61*"/>
+				<ColumnDefinition Width="371*"/>
+				<ColumnDefinition Width="362*"/>
+			</Grid.ColumnDefinitions>
+
+			<Label Height="28" Margin="0,8,0,0" Name="label1" VerticalAlignment="Top" HorizontalAlignment="Left">Id</Label>
+			<Label Height="28" Margin="0,37,0,0" Name="label2" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2">CodeName</Label>
+			<Label Height="28" Margin="0,72,0,0" Name="label3" VerticalAlignment="Top" HorizontalAlignment="Left">Speciality</Label>
+			<Label Height="28" Margin="0,107,0,0" Name="label4" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2">Assignment</Label>
+
+			<TextBox Height="23"
+					 Margin="39.2,10,0,0"
+					 Name="tbxId"
+					 VerticalAlignment="Top"
+					 HorizontalAlignment="Left"
+					 Width="58"
+					 Text="{Binding Path=CurrentAgent.ID}" Grid.Column="1"
+					 />
+			<TextBox Height="23"
+					 Width="317"
+					 Margin="39.2,39,14,0"
+					 Name="textBox2"
+					 VerticalAlignment="Top"
+					 HorizontalAlignment="Left"
+					 Text="{Binding Path=CurrentAgent.CodeName}" Grid.Column="1"
+					 />
+			<TextBox Height="23"
+					 Width="317"
+					 Margin="39.2,72,14,0"
+					 Name="TextBox3"
+					 VerticalAlignment="Top"
+					 HorizontalAlignment="Left"
+					 Text="{Binding Path=CurrentAgent.Speciality}" Grid.Column="1"
+					 />
+			<TextBox Height="224"
+					 AcceptsReturn="True"
+					 TextWrapping="Wrap"
+					 Margin="39.2,109,14,0"
+					 Name="TextBox4"
+					 VerticalAlignment="Top"
+					 Text="{Binding Path=CurrentAgent.Assignment}" Grid.Column="1"
+					 />
+			<ListBox ItemsSource="{Binding Path=Agents}"
+					 SelectedItem="{Binding Path=CurrentAgent}"
+					 SelectedIndex="{Binding Path=CurrentIndex}"
+					 IsSynchronizedWithCurrentItem="True"
+					 DisplayMemberPath="CodeName"
+					 Name="lbxAgents"
+					 Grid.Column="2"
+					 Margin="9,9,8.6,8.6"
+					 />
+		</Grid>
+	</DockPanel>
 </Window>
