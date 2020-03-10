@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:AgentAssignment"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <SolidColorBrush x:Key="BackgroundBrush" Color="Bisque"/>
+	    <local:AgentIdToColorConverter x:Key="IdToColorConverter"/>
+		<SolidColorBrush x:Key="BackgroundBrush" Color="Bisque"/>
         <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="FontSize" Value="12pt" />
             <Setter Property="FontFamily" Value="Consolas" />

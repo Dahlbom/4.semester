@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:AgentAssignment"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-	    <SolidColorBrush x:Key="BackgroundBrush" Color="Bisque"/>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="Bisque"/>
+        <local:AgentIdToColorValueConverter x:Key="IdToColorConverter" />
         <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="FontSize" Value="12pt" />
             <Setter Property="FontFamily" Value="Consolas" />
@@ -39,16 +40,24 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-		<DataTemplate x:Key="agentTemplate">
-			<WrapPanel>
-				<TextBlock Text="{Binding Path=ID}" Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"/>
-				<TextBlock Text="{Binding Path=CodeName}" Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"/>
-				<TextBlock Text="{Binding Path=Speciality}" Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"/>
-				<TextBlock Text="{Binding Path=Assignment}" Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"/>
-			</WrapPanel>
-		</DataTemplate>
-
-
-
-	</Application.Resources>
+        <DataTemplate x:Key="agentTemplate">
+            <WrapPanel>
+                <TextBlock Text="{Binding Path=ID}" Padding="5, 0" 
+                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
+                           Width="50" 
+                           />
+                <TextBlock Text="{Binding Path=CodeName}" Padding="5, 0"
+                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
+                           Width="100"
+                           />
+                <TextBlock Text="{Binding Path=Speciality}" Padding="5, 0" 
+                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
+                           Width="150" 
+                           />
+                <TextBlock Text="{Binding Path=Assignment}" Padding="5, 0"
+                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
+                           />
+            </WrapPanel>
+        </DataTemplate>
+    </Application.Resources>
 </Application>

@@ -4,16 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgentAssignment"
+        xmlns:d1="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        xmlns:prism="http://www.codeplex.com/prism"
         mc:Ignorable="d"
-        Title="Agent Assignments 3 - Lab 7" Height="450" Width="800"
+        Title="Agent Assignments 4 - Lab 4" Height="400" Width="800"
         Background="{DynamicResource ResourceKey=BackgroundBrush}">
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
-		<SolidColorBrush x:Key="ForegroundBrush" Color="Blue"/>
-
-		<!--Label style-->
+        <SolidColorBrush x:Key="ForegroundBrush" Color="Blue"/>
+        <!--Label style-->
         <Style TargetType="{x:Type Label}">
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
@@ -85,6 +86,21 @@
                      VerticalAlignment="Center"
                      MinWidth="150"
                      />
+            <Separator Width="auto" Margin="5,0"/>
+            <Label Content="Sort Order:"
+                   VerticalAlignment="Center" 
+                   Margin="2,0,2,0" 
+                   FontSize="12"
+                   />
+            <ComboBox Width="100" x:Name="sortOrderCombo" SelectedIndex="0"
+                      FontSize="12" SelectedItem="{Binding SelectedSortOrder}"
+                      >
+                <ComboBoxItem Tag="None">None</ComboBoxItem>
+                <ComboBoxItem Tag="ID">ID</ComboBoxItem>
+                <ComboBoxItem Tag="CodeName">CodeName</ComboBoxItem>
+                <ComboBoxItem Tag="Speciality">Speciality</ComboBoxItem>
+                <ComboBoxItem Tag="Assignment">Assignment</ComboBoxItem>
+            </ComboBox>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="AliceBlue">
             <StatusBarItem Content="Agents Count:" />
@@ -99,15 +115,16 @@
         </StatusBar>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1.2*"></ColumnDefinition>
                 <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Height="28" Margin="0,8,0,0" >Id</Label>
-            <Label Height="28" Margin="0,37,0,0"  >CodeName</Label>
-            <Label Height="28" Margin="0,72,0,0"  >Speciality</Label>
-            <Label Height="28" Margin="0,107,0,0" >Assignment</Label>
-            <TextBox Margin="39.2,10,0,0" 
+            <Label Margin="0,8,0,0" >Id</Label>
+            <Label Margin="0,37,0,0"  >CodeName</Label>
+            <Label Margin="0,72,0,0"  >Speciality</Label>
+            <Label Margin="0,107,0,0" >Assignment</Label>
+            <TextBox Margin="39,10,0,0" 
                      Name="tbxId" 
                      VerticalAlignment="Top" 
                      HorizontalAlignment="Left" 
@@ -116,18 +133,18 @@
                      Grid.Column="1"
                      Style="{StaticResource JamesStyle}"
                  />
-            <TextBox Margin="39.2,39,14,0" 
+            <TextBox Margin="39,39,14,0" 
                      Name="tbxCodeName" 
                      Text="{Binding Path=CurrentAgent.CodeName}" 
                      Grid.Column="1"
-                     Style="{StaticResource TextBoxStyle}"
+                     Style="{StaticResource InputStyle}"
                      />
-            <TextBox Margin="39.2,72,14,0" 
-                     Name="tbxSpeciality"
-                     Text="{Binding Path=CurrentAgent.Speciality}" 
-                     Grid.Column="1"
-                     Style="{StaticResource TextBoxStyle}"
-                     />
+            <ComboBox Margin="39,72,14,0" 
+                      SelectedItem="{Binding Path=CurrentAgent.Speciality}" 
+                      ItemsSource="{Binding Path=Specialities}"
+                      Grid.Column="1"
+                      Style="{StaticResource InputStyle}"
+                      />
             <TextBox Margin="39,109,14,9" 
                      Name="tbxAssignment" 
                      Text="{Binding Path=CurrentAgent.Assignment}" 
@@ -136,16 +153,22 @@
                      Grid.Column="1" 
                      VerticalAlignment="Stretch"
                      VerticalScrollBarVisibility="Auto"
-                     Style="{StaticResource TextBoxStyle}"
+                     Style="{StaticResource InputStyle}"
                      />
+            <GridSplitter Grid.Column="2"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Stretch"
+                          Width="3"
+                          Background="DarkBlue"
+                          />
             <ListBox ItemsSource="{Binding Path=Agents}" 
                      SelectedItem="{Binding Path=CurrentAgent}"
                      SelectedIndex="{Binding Path=CurrentIndex}"
-                     ItemTemplate="{StaticResource agentTemplate}"
                      IsSynchronizedWithCurrentItem="True"
+                     ItemTemplate="{StaticResource agentTemplate}"
                      Name="lbxAgents" 
-                     Grid.Column="2" 
-                     Margin="9,9,9,9"  
+                     Grid.Column="3" 
+                     Margin="9,9,9,9"
                      />
         </Grid>
     </DockPanel>

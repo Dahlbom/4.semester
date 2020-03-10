@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgentAssignment"
         mc:Ignorable="d"
-        Title="Agent Assignments 3 - Lab 7" Height="450" Width="800"
+        Title="Agent Assignments 4 - Lab 1" Height="400" Width="800"
         Background="{DynamicResource ResourceKey=BackgroundBrush}">
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
-		<SolidColorBrush x:Key="ForegroundBrush" Color="Blue"/>
+        <SolidColorBrush x:Key="ForegroundBrush" Color="Blue"/>
 
-		<!--Label style-->
+        <!--Label style-->
         <Style TargetType="{x:Type Label}">
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
@@ -101,6 +101,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label Height="28" Margin="0,8,0,0" >Id</Label>
@@ -138,14 +139,20 @@
                      VerticalScrollBarVisibility="Auto"
                      Style="{StaticResource TextBoxStyle}"
                      />
+            <GridSplitter Grid.Column="2"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Stretch"
+                          Width="3"
+                          Background="DarkBlue"
+                          />
             <ListBox ItemsSource="{Binding Path=Agents}" 
                      SelectedItem="{Binding Path=CurrentAgent}"
                      SelectedIndex="{Binding Path=CurrentIndex}"
-                     ItemTemplate="{StaticResource agentTemplate}"
                      IsSynchronizedWithCurrentItem="True"
+                     ItemTemplate="{StaticResource agentTemplate}"
                      Name="lbxAgents" 
-                     Grid.Column="2" 
-                     Margin="9,9,9,9"  
+                     Grid.Column="3" 
+                     Margin="9,9,9,9"
                      />
         </Grid>
     </DockPanel>
