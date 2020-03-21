@@ -1,0 +1,39 @@
+﻿body {
+    background-color: #ffffcc;
+    margin-left: 2cm;
+    margin-right: 30cm;
+    font: Verdana, Arial, sans-serif;
+}
+
+h1 {
+    background-color: #ccaa66;
+    color: #000000;
+    line-height: 200%; 
+    text-align: center;
+}
+
+dt {
+    font-weight: bold
+}
+
+#nav {
+    text-align: center;
+}
+
+#wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%
+}
+
+
+
+#footer {
+    font-size: .80em;
+    font-style: italic;
+    background-color: #ccaa66;
+    color: #000000;
+    text-align: center;
+}
+
+
